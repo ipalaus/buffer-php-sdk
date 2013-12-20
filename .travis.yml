@@ -1,0 +1,19 @@
+language: php
+
+php:
+  - 5.3
+  - 5.4
+  - 5.5
+  - hhvm
+
+before_script:
+  - composer require satooshi/php-coveralls:dev-master --prefer-source --no-interaction --dev
+
+script: phpunit -c phpunit.xml --coverage-text
+
+after_script:
+  - php vendor/bin/coveralls -v
+
+matrix:
+  allow_failures:
+    - php: hhvm
