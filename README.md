@@ -1,6 +1,6 @@
 # Buffer PHP SDK
 
-[![Build Status](https://travis-ci.org/ipalaus/buffer-php-sdk.png?branch=master)](https://travis-ci.org/ipalaus/buffer-php-sdkl)
+[![Build Status](https://travis-ci.org/ipalaus/buffer-php-sdk.png?branch=master)](https://travis-ci.org/ipalaus/buffer-php-sdk)
 [![Coverage Status](https://coveralls.io/repos/ipalaus/buffer-php-sdk/badge.png)](https://coveralls.io/r/ipalaus/buffer-php-sdk)
 
 Unofficial Buffer SDK for PHP.
