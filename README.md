@@ -25,7 +25,7 @@ Via [Composer](http://getcomposer.org):
 
 First of all, you need a valid token to be able to send authorized requests to the Buffer API. You can [register your app](http://bufferapp.com/developers/apps) and use the provided access token or get a user's token [authenticating](http://bufferapp.com/developers/api/oauth) with OAuth 2.0. 
 
-Once you have a valid token, you can create a new ```TokenAuthorization``` instance and then create a ```Client`` instance:
+Once you have a valid token, you can create a new ```TokenAuthorization``` instance and then create a ```Client``` instance:
 
 ```php
 use Ipalaus\Buffer\Client;
