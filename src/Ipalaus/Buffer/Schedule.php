@@ -52,7 +52,7 @@ class Schedule
         foreach ((array) $day as $value) {
             // only accept valid values
             if ( ! in_array($value, $available)) {
-                throw new InvalidArgumentException('Day must be a valid value: '.explode(', ', $available));
+                throw new InvalidArgumentException('Day must be a valid value: '.implode(', ', $available));
             }
 
             $this->days[] = $value;

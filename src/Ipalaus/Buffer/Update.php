@@ -90,7 +90,7 @@ class Update
 
         // accept only valid types for media
         if ( ! in_array($key, $available)) {
-            throw new InvalidArgumentException('Media type must be a valid value: '.explode(', ', $available));
+            throw new InvalidArgumentException('Media type must be a valid value: '.implode(', ', $available));
         }
 
         $this->media[$key] = $value;
