@@ -25,10 +25,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
 
     public function testGetUser()
     {
-        $guzzle = $this->getGuzzle($plugin = $this->getPlugin(new Response(200)));
-
-        $client = $this->getClient();
-        $client->expects($this->once())->method('getHttp')->will($this->returnValue($guzzle));
+        $client = $this->getClient($plugin = $this->getPlugin(new Response(200)));
         $client->getUser();
 
         $request = $plugin->getReceivedRequests();
@@ -39,10 +36,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
 
     public function testGetProfiles()
     {
-        $guzzle = $this->getGuzzle($plugin = $this->getPlugin(new Response(200)));
-
-        $client = $this->getClient();
-        $client->expects($this->once())->method('getHttp')->will($this->returnValue($guzzle));
+        $client = $this->getClient($plugin = $this->getPlugin(new Response(200)));
         $client->getProfiles();
 
         $request = $plugin->getReceivedRequests();
@@ -53,10 +47,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
 
     public function testGetProfile()
     {
-        $guzzle = $this->getGuzzle($plugin = $this->getPlugin(new Response(200)));
-
-        $client = $this->getClient();
-        $client->expects($this->once())->method('getHttp')->will($this->returnValue($guzzle));
+        $client = $this->getClient($plugin = $this->getPlugin(new Response(200)));
         $client->getProfile('ipalaus');
 
         $request = $plugin->getReceivedRequests();
@@ -67,10 +58,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
 
     public function testGetProfileSchedules()
     {
-        $guzzle = $this->getGuzzle($plugin = $this->getPlugin(new Response(200)));
-
-        $client = $this->getClient();
-        $client->expects($this->once())->method('getHttp')->will($this->returnValue($guzzle));
+        $client = $this->getClient($plugin = $this->getPlugin(new Response(200)));
         $client->getProfileSchedules('ipalaus');
 
         $request = $plugin->getReceivedRequests();
@@ -81,10 +69,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
 
     public function testUpdateProfileSchedules()
     {
-        $guzzle = $this->getGuzzle($plugin = $this->getPlugin(new Response(200)));
-
-        $client = $this->getClient();
-        $client->expects($this->once())->method('getHttp')->will($this->returnValue($guzzle));
+        $client = $this->getClient($plugin = $this->getPlugin(new Response(200)));
         $client->updateProfileSchedules('ipalaus', new Schedule(array('mon'), array('09:00')));
 
         $request = $plugin->getReceivedRequests();
@@ -98,16 +83,13 @@ class ClientTest extends PHPUnit_Framework_TestCase
      */
     public function testUpdateProfileSchedulesAsArrayThrowsException()
     {
-        $client = $this->getClient();
+        $client = new Client(new TokenAuthorization('ipalaus'));
         $client->updateProfileSchedules('ipalaus', array(new Schedule, new Schedule));
     }
 
     public function testGetUpdate()
     {
-        $guzzle = $this->getGuzzle($plugin = $this->getPlugin(new Response(200)));
-
-        $client = $this->getClient();
-        $client->expects($this->once())->method('getHttp')->will($this->returnValue($guzzle));
+        $client = $this->getClient($plugin = $this->getPlugin(new Response(200)));
         $client->getUpdate('ipalaus');
 
         $request = $plugin->getReceivedRequests();
@@ -118,10 +100,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
 
     public function testGetProfilePendingUpdates()
     {
-        $guzzle = $this->getGuzzle($plugin = $this->getPlugin(new Response(200)));
-
-        $client = $this->getClient();
-        $client->expects($this->once())->method('getHttp')->will($this->returnValue($guzzle));
+        $client = $this->getClient($plugin = $this->getPlugin(new Response(200)));
         $client->getProfilePendingUpdates('ipalaus');
 
         $request = $plugin->getReceivedRequests();
@@ -129,10 +108,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('GET', $request[0]->getMethod());
         $this->assertEquals($this->url.'profiles/ipalaus/updates/pending.json', $request[0]->getUrl());
 
-        $guzzle = $this->getGuzzle($plugin = $this->getPlugin(new Response(200)));
-
-        $client = $this->getClient();
-        $client->expects($this->once())->method('getHttp')->will($this->returnValue($guzzle));
+        $client = $this->getClient($plugin = $this->getPlugin(new Response(200)));
         $client->getProfilePendingUpdates('ipalaus', 1, 1, 2013, true);
 
         $request = $plugin->getReceivedRequests();
@@ -143,10 +119,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
 
     public function testGetProfileSentUpdates()
     {
-        $guzzle = $this->getGuzzle($plugin = $this->getPlugin(new Response(200)));
-
-        $client = $this->getClient();
-        $client->expects($this->once())->method('getHttp')->will($this->returnValue($guzzle));
+        $client = $this->getClient($plugin = $this->getPlugin(new Response(200)));
         $client->getProfileSentUpdates('ipalaus');
 
         $request = $plugin->getReceivedRequests();
@@ -154,10 +127,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('GET', $request[0]->getMethod());
         $this->assertEquals($this->url.'profiles/ipalaus/updates/sent.json', $request[0]->getUrl());
 
-        $guzzle = $this->getGuzzle($plugin = $this->getPlugin(new Response(200)));
-
-        $client = $this->getClient();
-        $client->expects($this->once())->method('getHttp')->will($this->returnValue($guzzle));
+        $client = $this->getClient($plugin = $this->getPlugin(new Response(200)));
         $client->getProfileSentUpdates('ipalaus', 1, 1, 2013, true);
 
         $request = $plugin->getReceivedRequests();
@@ -168,10 +138,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
 
     public function testGetUpdateInteractions()
     {
-        $guzzle = $this->getGuzzle($plugin = $this->getPlugin(new Response(200)));
-
-        $client = $this->getClient();
-        $client->expects($this->once())->method('getHttp')->will($this->returnValue($guzzle));
+        $client = $this->getClient($plugin = $this->getPlugin(new Response(200)));
         $client->getUpdateInteractions('ipalaus');
 
         $request = $plugin->getReceivedRequests();
@@ -179,10 +146,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('GET', $request[0]->getMethod());
         $this->assertEquals($this->url.'updates/ipalaus/interactions.json', $request[0]->getUrl());
 
-        $guzzle = $this->getGuzzle($plugin = $this->getPlugin(new Response(200)));
-
-        $client = $this->getClient();
-        $client->expects($this->once())->method('getHttp')->will($this->returnValue($guzzle));
+        $client = $this->getClient($plugin = $this->getPlugin(new Response(200)));
         $client->getUpdateInteractions('ipalaus', 1, 1, 'shares');
 
         $request = $plugin->getReceivedRequests();
@@ -193,10 +157,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
 
     public function testReorderProfileUpdates()
     {
-        $guzzle = $this->getGuzzle($plugin = $this->getPlugin(new Response(200)));
-
-        $client = $this->getClient();
-        $client->expects($this->once())->method('getHttp')->will($this->returnValue($guzzle));
+        $client = $this->getClient($plugin = $this->getPlugin(new Response(200)));
         $client->reorderProfileUpdates('ipalaus', 'lorem');
 
         $request = $plugin->getReceivedRequests();
@@ -204,10 +165,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('POST', $request[0]->getMethod());
         $this->assertEquals($this->url.'profiles/ipalaus/updates/reorder.json', $request[0]->getUrl());
 
-        $guzzle = $this->getGuzzle($plugin = $this->getPlugin(new Response(200)));
-
-        $client = $this->getClient();
-        $client->expects($this->once())->method('getHttp')->will($this->returnValue($guzzle));
+        $client = $this->getClient($plugin = $this->getPlugin(new Response(200)));
         $client->reorderProfileUpdates('ipalaus', array('lorem', 'ipsum'), 1, true);
 
         $request = $plugin->getReceivedRequests();
@@ -219,10 +177,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
 
     public function testShuffleProfileUpdates()
     {
-        $guzzle = $this->getGuzzle($plugin = $this->getPlugin(new Response(200)));
-
-        $client = $this->getClient();
-        $client->expects($this->once())->method('getHttp')->will($this->returnValue($guzzle));
+        $client = $this->getClient($plugin = $this->getPlugin(new Response(200)));
         $client->shuffleProfileUpdates('ipalaus');
 
         $request = $plugin->getReceivedRequests();
@@ -230,10 +185,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('POST', $request[0]->getMethod());
         $this->assertEquals($this->url.'profiles/ipalaus/updates/shuffle.json', $request[0]->getUrl());
 
-        $guzzle = $this->getGuzzle($plugin = $this->getPlugin(new Response(200)));
-
-        $client = $this->getClient();
-        $client->expects($this->once())->method('getHttp')->will($this->returnValue($guzzle));
+        $client = $this->getClient($plugin = $this->getPlugin(new Response(200)));
         $client->shuffleProfileUpdates('ipalaus', 1, true);
 
         $request = $plugin->getReceivedRequests();
@@ -252,7 +204,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
         $update->addMedia('link', 'http://ipalaus.com');
         $update->schedule(time() + 3600); // you can use timestamp
 
-        $client = $this->getClient();
+        $client = $this->getClient($plugin = $this->getPlugin(new Response(200)));
         $client->expects($this->once())->method('getHttp')->will($this->returnValue($guzzle));
 
         $client->createUpdate($update);
@@ -272,7 +224,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
         $update->addMedia('link', 'http://ipalaus.com');
         $update->schedule(time() + 3600); // you can use timestamp
 
-        $client = $this->getClient();
+        $client = $this->getClient($plugin = $this->getPlugin(new Response(200)));
         $client->expects($this->once())->method('getHttp')->will($this->returnValue($guzzle));
 
         $client->updateUpdate('ipalaus', $update);
@@ -285,10 +237,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
 
     public function testShareUpdate()
     {
-        $guzzle = $this->getGuzzle($plugin = $this->getPlugin(new Response(200)));
-
-        $client = $this->getClient();
-        $client->expects($this->once())->method('getHttp')->will($this->returnValue($guzzle));
+        $client = $this->getClient($plugin = $this->getPlugin(new Response(200)));
 
         $client->shareUpdate('ipalaus');
 
@@ -300,10 +249,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
 
     public function testDestroyUpdate()
     {
-        $guzzle = $this->getGuzzle($plugin = $this->getPlugin(new Response(200)));
-
-        $client = $this->getClient();
-        $client->expects($this->once())->method('getHttp')->will($this->returnValue($guzzle));
+        $client = $this->getClient($plugin = $this->getPlugin(new Response(200)));
 
         $client->destroyUpdate('ipalaus');
 
@@ -315,10 +261,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
 
     public function testMoveUpdateToTopUpdate()
     {
-        $guzzle = $this->getGuzzle($plugin = $this->getPlugin(new Response(200)));
-
-        $client = $this->getClient();
-        $client->expects($this->once())->method('getHttp')->will($this->returnValue($guzzle));
+        $client = $this->getClient($plugin = $this->getPlugin(new Response(200)));
 
         $client->moveUpdateToTop('ipalaus');
 
@@ -330,10 +273,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
 
     public function testGetLinkShares()
     {
-        $guzzle = $this->getGuzzle($plugin = $this->getPlugin(new Response(200)));
-
-        $client = $this->getClient();
-        $client->expects($this->once())->method('getHttp')->will($this->returnValue($guzzle));
+        $client = $this->getClient($plugin = $this->getPlugin(new Response(200)));
         $client->getLinkShares('http://ipalaus.com');
 
         $request = $plugin->getReceivedRequests();
@@ -344,10 +284,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
 
     public function testGetConfiguration()
     {
-        $guzzle = $this->getGuzzle($plugin = $this->getPlugin(new Response(200)));
-
-        $client = $this->getClient();
-        $client->expects($this->once())->method('getHttp')->will($this->returnValue($guzzle));
+        $client = $this->getClient($plugin = $this->getPlugin(new Response(200)));
         $client->getConfigurationInfo();
 
         $request = $plugin->getReceivedRequests();
@@ -356,9 +293,11 @@ class ClientTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->url.'info/configuration.json', $request[0]->getUrl());
     }
 
-    protected function getClient()
+    protected function getClient($plugin)
     {
+        $guzzle = $this->getGuzzle($plugin);
         $client = $this->getMock('Ipalaus\Buffer\Client', array('getHttp'), array(new TokenAuthorization('ipalaus')));
+        $client->expects($this->once())->method('getHttp')->will($this->returnValue($guzzle));
 
         return $client;
     }
