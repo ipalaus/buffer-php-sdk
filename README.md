@@ -303,3 +303,11 @@ The services keys map directly to those on profiles and updates so that you can 
 ```php
 $client->getConfigurationInfo();
 ```
+
+## Support
+
+Bugs and feature request are tracked on [GitHub](https://github.com/ipalaus/buffer-php-sdk/issues).
+
+## License
+
+This package is released under the MIT License. See the bundled [LICENSE](https://github.com/ipalaus/buffer-php-sdk/blob/master/LICENSE) file for details.
