@@ -210,7 +210,10 @@ class Client
         }
 
         if (isset($data['event'])) {
-            $available = array("retweet", "favorite", "like", "comment", "mention", "share");
+            $available = array(
+                'retweet', 'retweets', 'favorite', 'favorites', 'like', 'likes', 'comment', 'comments',
+                'mention', 'mentions', 'share', 'shares',
+            );
 
             if (in_array($data['event'], $available)) {
                 $payload['event'] = $data['event'];
