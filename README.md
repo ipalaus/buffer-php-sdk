@@ -1,5 +1,8 @@
 # Buffer PHP SDK
 
+[![Build Status](https://travis-ci.org/ipalaus/buffer-php-sdk.png?branch=master)](https://travis-ci.org/ipalaus/buffer-php-sdkl)
+[![Coverage Status](https://coveralls.io/repos/ipalaus/buffer-php-sdk/badge.png)](https://coveralls.io/r/ipalaus/buffer-php-sdk)
+
 Unofficial Buffer SDK for PHP.
 
 This package is compliant with [PSR-0][], [PSR-1][], and [PSR-2][]. If you
