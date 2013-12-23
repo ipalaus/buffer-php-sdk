@@ -89,14 +89,13 @@ Set the posting schedules for the specified social media profile.
 use Ipalaus\Buffer\Schedule;
 
 $schedule = new Schedule;
-$schedule->addDay('mon');
 
 // you can pass a single string or an array
+$schedule->addDay('mon');
 $schedule->addDay(array('tue', 'wed')); 
 
-$schedule->addTime('09:00');
-
 // same for time
+$schedule->addTime('09:00');
 $schedule->addTime(array('12:00', '15:00')); 
 
 $client->updateProfileSchedules('id', $schedule);
@@ -229,7 +228,6 @@ $update->schedule(time() + 3600); // you can use timestamp
 $update->schedule('2013-12-23 12:03:23'); // or a valid date/time string
 
 $client->createUpdate($update);
-
 ```
 
 - `Update::$text string` The status update text.
