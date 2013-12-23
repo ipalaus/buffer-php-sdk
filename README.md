@@ -112,7 +112,7 @@ $weekends = new Schedule(array('sat', 'sun'), array('12:00', '18:00');
 $client->updateProfileSchedules($id, array($weekdays, $weekends));
 ```
 
-**Note**: updating multiple schedules seems to be broken in the Buffer API. I'll email them and try to fix the issue. For now, you can only update one schedule.
+**Note**: updating multiple schedules only works for paid plans. Unfortunately, if we try to update multiple schedules in a free plan it will simply erase everything.
 
 ## Updates
 
@@ -171,6 +171,8 @@ $client->getUpdateInteractions($id, $page = null, $count = null, $event = null);
 - `$page integer` Specifies the page of interactions to receive. If not specified the first page of results will be returned.
 - `$count integer` Specifies the number of interactions to receive. If provided, must be between 1 and 100.
 - `$event string` Specifies a type of event to be retrieved, for example "retweet", "favorite", "like", "comment", "mention" or "share". They can also be plural (e.g., "shares"). Plurality has no effect other than visual semantics.
+
+**Note**: I think there is a bug in this endpoint. I've to dig dipper to find out what's going on.
 
 ### Reorder updates
 
