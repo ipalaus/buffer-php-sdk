@@ -16,7 +16,7 @@ Via [Composer](http://getcomposer.org):
 ``` json
 {
     "require": {
-        "ipalaus/buffer-php-sdk": "1.*"
+        "ipalaus/buffer-php-sdk": "1.0.*"
     }
 }
 ```
