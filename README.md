@@ -40,6 +40,8 @@ $client = new Client($auth);
 
 ## User
 
+A user represents a single Buffer user account.
+
 ### Get a user
 
 Returns a single user.
@@ -49,6 +51,8 @@ $user = $client->getUser();
 ```
 
 ## Profiles
+
+A Buffer profile represents a connection to a single social media account.
 
 ### Get profiles
 
@@ -108,6 +112,8 @@ $client->updateProfileSchedules($id, array($weekdays, $weekends));
 **Note**: updating multiple schedules seems to be broken in the Buffer API. I'll email them and try to fix the issue. For now, you can only update one schedule.
 
 ## Updates
+
+An update represents a single post to a single social media account. An update can also include media attachments such as pictures and links.
 
 ### Get a update
 
@@ -261,11 +267,36 @@ Permanently delete an existing status update.
 $client->destroyUpdate($id);
 ```
 
-### 
+### Move update to top
 
+Move an existing status update to the top of the queue and recalculate times for all updates in the queue. Returns the update with its new posting time.
 
-- shareUpdate($id)
-- destroyUpdate($id)
-- moveUpdateToTop($id)
-- getLinkShares($url)
-- getConfigurationInfo()
+```php
+$client->moveUpdateToTop($id);
+```
+
+## Links
+
+A link represents a unique URL that has been shared through Buffer.
+
+### Shares
+
+Returns an object with a the numbers of shares a link has had using Buffer. **www** will be stripped, but other subdomains will not.
+
+```php
+$client->getLinkShares('http://ipalaus.com');
+```
+
+## Info
+
+This namespace is used for auxilary information that can be useful when creating your app.
+
+### Get configuration
+
+Returns an object with the current configuration that Buffer is using, including supported services, their icons and the varying limits of character and schedules.
+
+The services keys map directly to those on profiles and updates so that you can easily show the correct icon or calculate the correct character length for an update.
+
+```php
+$client->getConfigurationInfo();
+```
