@@ -1,6 +1,5 @@
 <?php
 
-use Mockery as m;
 use Ipalaus\Buffer\Client;
 use Ipalaus\Buffer\Update;
 use Ipalaus\Buffer\Schedule;
