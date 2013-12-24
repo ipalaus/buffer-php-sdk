@@ -89,14 +89,13 @@ Set the posting schedules for the specified social media profile.
 use Ipalaus\Buffer\Schedule;
 
 $schedule = new Schedule;
-$schedule->addDay('mon');
 
 // you can pass a single string or an array
+$schedule->addDay('mon');
 $schedule->addDay(array('tue', 'wed')); 
 
-$schedule->addTime('09:00');
-
 // same for time
+$schedule->addTime('09:00');
 $schedule->addTime(array('12:00', '15:00')); 
 
 $client->updateProfileSchedules('id', $schedule);
@@ -112,7 +111,7 @@ $weekends = new Schedule(array('sat', 'sun'), array('12:00', '18:00');
 $client->updateProfileSchedules($id, array($weekdays, $weekends));
 ```
 
-**Note**: updating multiple schedules seems to be broken in the Buffer API. I'll email them and try to fix the issue. For now, you can only update one schedule.
+**Note**: updating multiple schedules only works for paid plans. Unfortunately, if we try to update multiple schedules in a free plan it will simply erase everything.
 
 ## Updates
 
@@ -172,6 +171,8 @@ $client->getUpdateInteractions($id, $page = null, $count = null, $event = null);
 - `$count integer` Specifies the number of interactions to receive. If provided, must be between 1 and 100.
 - `$event string` Specifies a type of event to be retrieved, for example "retweet", "favorite", "like", "comment", "mention" or "share". They can also be plural (e.g., "shares"). Plurality has no effect other than visual semantics.
 
+**Note**: I think there is a bug in this endpoint. I've to dig dipper to find out what's going on.
+
 ### Reorder updates
 
 Edit the order at which statuses for the specified social media profile will be sent out of the buffer.
@@ -227,7 +228,6 @@ $update->schedule(time() + 3600); // you can use timestamp
 $update->schedule('2013-12-23 12:03:23'); // or a valid date/time string
 
 $client->createUpdate($update);
-
 ```
 
 - `Update::$text string` The status update text.
