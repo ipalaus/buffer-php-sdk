@@ -52,7 +52,7 @@ class Button
 
         $anchor .= '>Buffer</a>';
 
-        $script = '<script type="text/javascript" src="http://static.bufferapp.com/js/button.js"></script>';
+        $script = '<script type="text/javascript" src="//static.bufferapp.com/js/button.js"></script>';
 
         return $anchor.$script;
     }

@@ -9,7 +9,7 @@ class ButtonTest extends PHPUnit_Framework_TestCase
     {
         $button = Button::create('vertical');
 
-        $string = '<a href="http://bufferapp.com/add" class="buffer-add-button" data-count="vertical">Buffer</a><script type="text/javascript" src="http://static.bufferapp.com/js/button.js"></script>';
+        $string = '<a href="http://bufferapp.com/add" class="buffer-add-button" data-count="vertical">Buffer</a><script type="text/javascript" src="//static.bufferapp.com/js/button.js"></script>';
 
         $this->assertEquals($button, $string);
     }
