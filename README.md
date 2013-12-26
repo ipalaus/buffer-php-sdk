@@ -41,11 +41,11 @@ $client = new Client($auth);
 
 ## Methods
 
-## User
+### User
 
 A user represents a single Buffer user account.
 
-### Get a user
+#### Get a user
 
 Returns a single user.
 
@@ -53,11 +53,11 @@ Returns a single user.
 $user = $client->getUser();
 ```
 
-## Profiles
+### Profiles
 
 A Buffer profile represents a connection to a single social media account.
 
-### Get profiles
+#### Get profiles
 
 Returns an array of social media profiles connected to a users account.
 
@@ -65,7 +65,7 @@ Returns an array of social media profiles connected to a users account.
 $profiles = $client->getProfiles();
 ```
 
-### Get a single profile
+#### Get a single profile
 
 Returns details of the single specified social media profile.
 
@@ -73,7 +73,7 @@ Returns details of the single specified social media profile.
 $client->getProfile($id);
 ```
 
-### Get posting schedules
+#### Get posting schedules
 
 Returns details of the posting schedules associated with a social media profile.
 
@@ -81,7 +81,7 @@ Returns details of the posting schedules associated with a social media profile.
 $client->getProfileSchedules($id);
 ```
 
-### Set posting schedules
+#### Set posting schedules
 
 Set the posting schedules for the specified social media profile.
 
@@ -113,11 +113,11 @@ $client->updateProfileSchedules($id, array($weekdays, $weekends));
 
 **Note**: updating multiple schedules only works for paid plans. Unfortunately, if we try to update multiple schedules in a free plan it will simply erase everything.
 
-## Updates
+### Updates
 
 An update represents a single post to a single social media account. An update can also include media attachments such as pictures and links.
 
-### Get a update
+#### Get a update
 
 Returns a single social media update.
 
@@ -125,7 +125,7 @@ Returns a single social media update.
 $client->getUpdate('id');
 ```
 
-### Get pending updates
+#### Get pending updates
 
 Returns an array of updates that are currently in the buffer for an individual social media profile.
 
@@ -141,7 +141,7 @@ $client->getProfilePendingUpdates($id, $page = null, $count = null, $since = nul
 - `$since integer` Specifies a unix timestamp which only status updates created after this time will be retrieved.
 - `$utc boolean` If utc is set times will be returned relative to UTC rather than the users associated timezone.
 
-### Get sent updates
+#### Get sent updates
  
 Returns an array of updates that have been sent from the buffer for an individual social media profile.
 
@@ -156,7 +156,7 @@ $client->getProfileSentUpdates($id, $page = null, $count = null, $since = null, 
 - `$since integer` Specifies a unix timestamp which only status updates created after this time will be retrieved.
 - `$utc boolean` If utc is set times will be returned relative to UTC rather than the users associated timezone.
 
-### Get update interactions
+#### Get update interactions
 
 Returns the detailed information on individual interactions with the social media update such as favorites, retweets and likes.
 
@@ -173,7 +173,7 @@ $client->getUpdateInteractions($id, $page = null, $count = null, $event = null);
 
 **Note**: I think there is a bug in this endpoint. I've to dig dipper to find out what's going on.
 
-### Reorder updates
+#### Reorder updates
 
 Edit the order at which statuses for the specified social media profile will be sent out of the buffer.
 
@@ -188,7 +188,7 @@ $client->reorderProfileUpdates($id, $order, $offset = null, $utc = false)
 - `$offset integer` Specifies the number of status updates to receive. If provided, must be between 1 and 100.
 - `$utc boolean` If utc is set times will be returned relative to UTC rather than the users associated timezone.
 
-### Randomize updates order
+#### Randomize updates order
 
 Randomize the order at which statuses for the specified social media profile will be sent out of the buffer.
 
@@ -202,7 +202,7 @@ $client->shuffleProfileUpdates($id, $count = null, $utc = false);
 - `$count integer` Specifies the number of status updates returned. These will correspond to the first status updates that will be posted.
 - `$utc boolean` If utc is set times will be returned relative to UTC rather than the users associated timezone.
 
-### Create a update
+#### Create a update
 
 Create one or more new status updates.
 
@@ -238,7 +238,7 @@ $client->createUpdate($update);
 - **Media** Media to be attached to the update, currently accepts link, description and picture parameters.
 - **Schedule** A date describing when the update should be posted. Overrides any top or now parameter.
 
-### Update an update
+#### Update an update
 
 Edit an existing, individual status update.
 
@@ -254,7 +254,7 @@ $client->updateUpdate($id, $update);
 - **Media** Media to be attached to the update, currently accepts link, description and picture parameters.
 - **Schedule** A date describing when the update should be posted. Overrides any top or now parameter.
 
-### Share an update
+#### Share an update
 
 Immediately shares a single pending update and recalculates times for updates remaining in the queue.
 
@@ -262,7 +262,7 @@ Immediately shares a single pending update and recalculates times for updates re
 $client->shareUpdate($id);
 ```
 
-### Destroy an update
+#### Destroy an update
 
 Permanently delete an existing status update.
 
@@ -270,7 +270,7 @@ Permanently delete an existing status update.
 $client->destroyUpdate($id);
 ```
 
-### Move update to top
+#### Move update to top
 
 Move an existing status update to the top of the queue and recalculate times for all updates in the queue. Returns the update with its new posting time.
 
@@ -278,11 +278,11 @@ Move an existing status update to the top of the queue and recalculate times for
 $client->moveUpdateToTop($id);
 ```
 
-## Links
+### Links
 
 A link represents a unique URL that has been shared through Buffer.
 
-### Shares
+#### Shares
 
 Returns an object with a the numbers of shares a link has had using Buffer. **www** will be stripped, but other subdomains will not.
 
@@ -290,11 +290,11 @@ Returns an object with a the numbers of shares a link has had using Buffer. **ww
 $client->getLinkShares('http://ipalaus.com');
 ```
 
-## Info
+### Info
 
 This namespace is used for auxilary information that can be useful when creating your app.
 
-### Get configuration
+#### Get configuration
 
 Returns an object with the current configuration that Buffer is using, including supported services, their icons and the varying limits of character and schedules.
 
@@ -303,6 +303,30 @@ The services keys map directly to those on profiles and updates so that you can 
 ```php
 $client->getConfigurationInfo();
 ```
+
+## Buffer Button
+
+You can also generate a [Buffer Button](https://bufferapp.com/extras/button) with the SDK:
+
+```php
+
+use Ipalaus\Buffer\Button;
+
+// available count styles: vertical, horizontal or none
+echo Button::create('vertical');
+
+// our even simpler
+echo Button::vertical();
+
+// optional parameters
+Button::create($style, $tweet = null, $url = null, $username = null, $picture = null);
+```
+
+ - `$style string` Where the counter is positioned, options: vertical, horizontal or none.
+ - `$tweet string` Blank to use title of the page the button is on.
+ - `$url string` Blank to use URL for the page the button is on
+ - `$username string` Twitter username to mention.
+ - `$picture string ` URL of picture you want to share (optional).
 
 ## Support
 
