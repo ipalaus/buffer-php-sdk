@@ -19,7 +19,7 @@ Via [Composer](http://getcomposer.org):
 ``` json
 {
     "require": {
-        "ipalaus/buffer-php-sdk": "1.0.*"
+        "ipalaus/buffer-php-sdk": "1.1.*"
     }
 }
 ```
@@ -309,7 +309,6 @@ $client->getConfigurationInfo();
 You can also generate a [Buffer Button](https://bufferapp.com/extras/button) with the SDK:
 
 ```php
-
 use Ipalaus\Buffer\Button;
 
 // available count styles: vertical, horizontal or none
