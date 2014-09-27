@@ -218,10 +218,11 @@ $update->shorten = false; // optional, default: true
 $update->now = false; // optional, default: true
 $update->top = true; // optonal, default: false
 
-// adding media is optional, avaible options: link, description, image
+// adding media is optional, avaible options: link, description, picture
 $update->addMedia('link', 'http://ipalaus.com');
 $update->addMedia('description', 'Isern Palaus personal website.');
-$update->addMedia('image', 'http://ipalaus.com/img/isern-palaus_smile.jpg');
+$update->addMedia('picture', 'http://ipalaus.com/img/isern-palaus_smile.jpg');
+$update->addMedia('thumbnail', 'http://ipalaus.com/img/isern-palaus_smile.jpg'); // required with picture
 
 // schedule a update is optional 
 $update->schedule(time() + 3600); // you can use timestamp
