@@ -330,7 +330,7 @@ class Client
             'shorten' => $update->shorten,
             'now' => $update->now,
             'top' => $update->top,
-            'attachment' => $update->attachment,
+            'attachment' => $update->attachment
         );
 
         if ( ! empty($update->media)) {
