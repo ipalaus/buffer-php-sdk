@@ -86,7 +86,7 @@ class Update
      */
     public function addMedia($key, $value)
     {
-        $available = array('link', 'description', 'picture');
+        $available = array('link', 'description', 'picture', 'thumbnail');
 
         // accept only valid types for media
         if ( ! in_array($key, $available)) {
