@@ -48,6 +48,14 @@ class Update
     public $top = false;
 
     /**
+     * In the absence of the media parameter, controls whether a link in the
+     * text should automatically populate the media parameter.
+     *
+     * @var boolean
+     */
+    public $attachment = true;
+     
+    /**
      * An associative array of media to be attached to the update, currently
      * accepts link, description and picture parameters.
      *
