@@ -218,7 +218,7 @@ $update->shorten = false; // optional, default: true
 $update->now = false; // optional, default: true
 $update->top = true; // optonal, default: false
 
-// adding media is optional, avaible options: link, description, picture
+// adding media is optional, available options: link, description, picture, thumbnail
 $update->addMedia('link', 'http://ipalaus.com');
 $update->addMedia('description', 'Isern Palaus personal website.');
 $update->addMedia('picture', 'http://ipalaus.com/img/isern-palaus_smile.jpg');
