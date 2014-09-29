@@ -317,7 +317,7 @@ class Client
     }
 
     /**
-     * Build the payload for creeateUpdate.
+     * Build the payload for createUpdate.
      *
      * @param  \Ipalaus\Buffer\Update  $update
      * @return array
@@ -330,6 +330,7 @@ class Client
             'shorten' => $update->shorten,
             'now' => $update->now,
             'top' => $update->top,
+            'attachment' => $update->attachment
         );
 
         if ( ! empty($update->media)) {
