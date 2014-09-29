@@ -214,10 +214,10 @@ $update = new Update;
 $update->text = 'Check out my website!';
 $update->addProfile($id);
 
-$update->shorten = false; // optional, default: true 
-$update->now = false; // optional, default: true
-$update->top = true; // optional, default: false
-$update->attachment = false; // optional, default: true
+$update->shorten = 'false'; // optional, default: true 
+$update->now = 'false'; // optional, default: true
+$update->top = 'true'; // optional, default: false
+$update->attachment = 'false'; // optional, default: true
 
 // adding media is optional, available options: link, description, picture, thumbnail
 $update->addMedia('link', 'http://ipalaus.com');
