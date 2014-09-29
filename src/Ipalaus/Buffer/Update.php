@@ -29,7 +29,7 @@ class Update
      *
      * @var boolean
      */
-    public $shorten = true;
+    public $shorten = 'true';
 
     /**
      * If now is set, this update will be sent immediately to all profiles
@@ -37,7 +37,7 @@ class Update
      *
      * @var boolean
      */
-    public $now = false;
+    public $now = 'false';
 
     /**
      * If top is set, this update will be added to the top of the buffer and
@@ -45,7 +45,7 @@ class Update
      *
      * @var boolean
      */
-    public $top = false;
+    public $top = 'false';
 
     /**
      * In the absence of the media parameter, controls whether a link in the
@@ -53,7 +53,7 @@ class Update
      *
      * @var boolean
      */
-    public $attachment = true;
+    public $attachment = 'true';
      
     /**
      * An associative array of media to be attached to the update, currently
