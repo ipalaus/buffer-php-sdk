@@ -294,7 +294,7 @@ $client->getLinkShares('http://ipalaus.com');
 
 ### Info
 
-This namespace is used for auxilary information that can be useful when creating your app.
+This namespace is used for auxiliary information that can be useful when creating your app.
 
 #### Get configuration
 
